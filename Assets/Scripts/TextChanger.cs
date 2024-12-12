@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 public class TextChanger : MonoBehaviour
 {
+    private const string _textForReplacement = "Прощай жестокий мир";
+    private const string _textForAdd = ", это я, я вижу тебя";
+    private const string _textForShake = "ахахахахах, вот тебя и обманули";
+
     [SerializeField] private Text _text;
     [SerializeField] private float _duration;
 
@@ -13,9 +17,9 @@ public class TextChanger : MonoBehaviour
     {
         Sequence sequence = DOTween.Sequence();
 
-        sequence.Append(_text.DOText("Прощай жестокий мир", _duration));
-        sequence.Append(_text.DOText(", это я, я вижу тебя", _duration).SetRelative());
-        sequence.Append(_text.DOText("ахахахахах, вот тебя и обманули", _duration, true, ScrambleMode.All));
+        sequence.Append(_text.DOText(_textForReplacement, _duration));
+        sequence.Append(_text.DOText(_textForAdd, _duration).SetRelative());
+        sequence.Append(_text.DOText(_textForShake, _duration, true, ScrambleMode.All));
 
         sequence.Play();
 
